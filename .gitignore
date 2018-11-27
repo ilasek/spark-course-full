@@ -1,0 +1,9 @@
+logs
+spark-warehouse
+.idea
+target
+.DS_Store
+aws
+~$*
+secrets
+*.iml
