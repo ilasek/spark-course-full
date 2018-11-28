@@ -1,20 +1,18 @@
-#Introduction to Apache Spark
+# Introduction to Apache Spark
 
-
-
-##Annotation
+## Annotation
 Apache Spark has quickly become one of the most popular frameworks for Big Data processing. Its flexible and easy to use API as well as a wide range of analytical tools provided on top of Spark make it an ideal choice for many data processing use cases. This course introduces Apache Spark in the context of the whole Big Data ecosystem. We will walk through all major aspects of Spark – ranging from ordinary Spark SQL based ETL jobs, over Spark support for streaming data to DataScience and Machine Learning toolset. We will start with the overview of basic Big Data concepts and Spark principles, so no previous experience with Big Data technologies is needed.
 
-##Audience
+## Audience
 * Software developers
 * Software architects
 * Data analysts, Data scientists
 * IT professionals
 
-##Goals
+## Goals
 This workshop is designed to familiarize attendees with Apache Spark – a well-known engine for fast Big Data processing. Attendees do not need to have prior knowledge of Apache Spark or Hadoop.
 
-##Agenda
+## Agenda
 1. [Theoretical introduction](spark-introduction/README.md) *1.5h*
     1. Introduction
         * What is Apache Spark?
@@ -55,7 +53,7 @@ This workshop is designed to familiarize attendees with Apache Spark – a well-
     * Shuffling algorithms [Link](https://0x0fff.com/spark-architecture-shuffle/)
     * Spark memory model [Link](https://medium.com/@pang.xin/spark-study-notes-core-concepts-visualized-5256c44e4090)
 
-##Instructor
+## Instructor
 **Ivo Lašek (Solution Architect Big Data at MSD IT Global Innovation Center s.r.o.)** https://www.linkedin.com/in/ivolasek
 
 Ivo works as an architect in Big Data team at MSD. Before joining MSD he co-founded several sartups successfully sold to companies like Mlada fronta or Seznam.cz. He has worked with Apache based big data technologies for more than 8 years (Apache Solr, later Elastic, Hadoop since version 0.2 and since 2015 Apache Spark). Ivo gained PhD in Semantic web and web data processing at Faculty of Information Technologies at Czech Technical University in Prague.

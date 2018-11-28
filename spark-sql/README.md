@@ -106,5 +106,5 @@ Data source [Kaggle Trending Youtube video statistics](https://www.kaggle.com/da
 ### Bonus
 Try to store videos datasets in all three formats (CSV, Avro, Parquet) and compare sizes of individual files/directories.
 
-###Hints
+### Hints
 [How to process JSON?](https://docs.databricks.com/spark/latest/data-sources/read-json.html)
