@@ -1,0 +1,527 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\npip install pandas\n",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 4:41:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "http://uswhsc88.merck.com:8080\nRequirement already satisfied: pandas in /opt/conda/lib/python2.7/site-packages\nRequirement already satisfied: pytz\u003e\u003d2011k in /opt/conda/lib/python2.7/site-packages (from pandas)\nRequirement already satisfied: python-dateutil\u003e\u003d2.5.0 in /opt/conda/lib/python2.7/site-packages (from pandas)\nRequirement already satisfied: numpy\u003e\u003d1.9.0 in /opt/conda/lib/python2.7/site-packages (from pandas)\nRequirement already satisfied: six\u003e\u003d1.5 in /opt/conda/lib/python2.7/site-packages (from python-dateutil\u003e\u003d2.5.0-\u003epandas)\nYou are using pip version 9.0.1, however version 18.1 is available.\nYou should consider upgrading via the \u0027pip install --upgrade pip\u0027 command.\nRequirement already satisfied: pydot3 in /opt/conda/lib/python2.7/site-packages\nRequirement already satisfied: pyparsing in /opt/conda/lib/python2.7/site-packages (from pydot3)\nRequirement already satisfied: setuptools in /opt/conda/lib/python2.7/site-packages/setuptools-27.2.0-py2.7.egg (from pydot3)\nYou are using pip version 9.0.1, however version 18.1 is available.\nYou should consider upgrading via the \u0027pip install --upgrade pip\u0027 command.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543241841327_-208309666",
+      "id": "20181126-141721_727246170",
+      "dateCreated": "Nov 26, 2018 2:17:21 PM",
+      "dateStarted": "Nov 26, 2018 3:10:31 PM",
+      "dateFinished": "Nov 26, 2018 3:10:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncovertype_dataset \u003d spark.read.parquet(\"/data/covertype_dataset.snappy.parquet\")\ncovertype_dataset.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- elevation: long (nullable \u003d true)\n |-- aspect: long (nullable \u003d true)\n |-- slope: long (nullable \u003d true)\n |-- horizontal_distance_to_hydrology: long (nullable \u003d true)\n |-- vertical_distance_to_hydrology: long (nullable \u003d true)\n |-- horizontal_distance_to_roadways: long (nullable \u003d true)\n |-- hillshade_9am: long (nullable \u003d true)\n |-- hillshade_noon: long (nullable \u003d true)\n |-- hillshade_3pm: long (nullable \u003d true)\n |-- horizontal_distance_to_fire_points: long (nullable \u003d true)\n |-- wilderness_area: string (nullable \u003d true)\n |-- soil_type: string (nullable \u003d true)\n |-- cover_type: string (nullable \u003d true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543240995357_2024389322",
+      "id": "20181126-140315_1192084888",
+      "dateCreated": "Nov 26, 2018 2:03:15 PM",
+      "dateStarted": "Nov 26, 2018 3:07:35 PM",
+      "dateFinished": "Nov 26, 2018 3:07:35 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n\ncovertype_dataset.limit(10).toPandas()",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:38 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "   elevation  aspect  slope  horizontal_distance_to_hydrology  vertical_distance_to_hydrology  horizontal_distance_to_roadways       ...        hillshade_noon  hillshade_3pm  horizontal_distance_to_fire_points        wilderness_area       soil_type      cover_type\n0       2596      51      3                               258                               0                              510       ...                   232            148                                6279  rawah wilderness area  Soil_Type_7745           Aspen\n1       2590      56      2                               212                              -6                              390       ...                   235            151                                6225  rawah wilderness area  Soil_Type_7745           Aspen\n2       2804     139      9                               268                              65                             3180       ...                   238            135                                6121  rawah wilderness area  Soil_Type_4744  Lodgepole Pine\n3       2785     155     18                               242                             118                             3090       ...                   238            122                                6211  rawah wilderness area  Soil_Type_7746  Lodgepole Pine\n4       2595      45      2                               153                              -1                              391       ...                   234            150                                6172  rawah wilderness area  Soil_Type_7745           Aspen\n5       2579     132      6                               300                             -15                               67       ...                   237            140                                6031  rawah wilderness area  Soil_Type_7745  Lodgepole Pine\n6       2606      45      7                               270                               5                              633       ...                   225            138                                6256  rawah wilderness area  Soil_Type_7745           Aspen\n7       2605      49      4                               234                               7                              573       ...                   230            144                                6228  rawah wilderness area  Soil_Type_7745           Aspen\n8       2617      45      9                               240                              56                              666       ...                   221            133                                6244  rawah wilderness area  Soil_Type_7745           Aspen\n9       2612      59     10                               247                              11                              636       ...                   219            124                                6230  rawah wilderness area  Soil_Type_7745           Aspen\n\n[10 rows x 13 columns]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543241585345_1636805973",
+      "id": "20181126-141305_1514736467",
+      "dateCreated": "Nov 26, 2018 2:13:05 PM",
+      "dateStarted": "Nov 26, 2018 3:07:38 PM",
+      "dateFinished": "Nov 26, 2018 3:07:38 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import StringIndexer\n\nstring_indexer_wilderness \u003d StringIndexer(inputCol\u003d\"wilderness_area\", outputCol\u003d\"wilderness_area_indexed\")\n\nstring_indexer_soil \u003d StringIndexer(inputCol\u003d\"soil_type\", outputCol\u003d\"soil_type_indexed\")\n                                    \nstring_indexer_cover \u003d StringIndexer(inputCol\u003d\"cover_type\", outputCol\u003d\"cover_type_indexed\")",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543241648222_444377187",
+      "id": "20181126-141408_771744602",
+      "dateCreated": "Nov 26, 2018 2:14:08 PM",
+      "dateStarted": "Nov 26, 2018 3:07:43 PM",
+      "dateFinished": "Nov 26, 2018 3:07:43 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nstring_indexer_wilderness_model \u003d string_indexer_wilderness.fit(covertype_dataset)\n\nstring_indexer_soil_model \u003d string_indexer_soil.fit(covertype_dataset)\n\nstring_indexer_cover_model \u003d string_indexer_cover.fit(covertype_dataset)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:46 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242268852_-801580434",
+      "id": "20181126-142428_1588341416",
+      "dateCreated": "Nov 26, 2018 2:24:28 PM",
+      "dateStarted": "Nov 26, 2018 3:07:46 PM",
+      "dateFinished": "Nov 26, 2018 3:07:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncovertype_dataset_indexed_features \u003d string_indexer_cover_model.transform(string_indexer_soil_model\n                                                                          .transform(string_indexer_wilderness_model\n                                                                                     .transform(covertype_dataset)\n                                                                                    )\n                                                                         )",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:49 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242284737_2097133103",
+      "id": "20181126-142444_1223762321",
+      "dateCreated": "Nov 26, 2018 2:24:44 PM",
+      "dateStarted": "Nov 26, 2018 3:07:49 PM",
+      "dateFinished": "Nov 26, 2018 3:07:49 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncovertype_dataset_indexed_features.limit(10).toPandas()",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:51 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "   elevation  aspect  slope  horizontal_distance_to_hydrology  vertical_distance_to_hydrology  horizontal_distance_to_roadways        ...                wilderness_area       soil_type      cover_type  wilderness_area_indexed soil_type_indexed cover_type_indexed\n0       2596      51      3                               258                               0                              510        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n1       2590      56      2                               212                              -6                              390        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n2       2804     139      9                               268                              65                             3180        ...          rawah wilderness area  Soil_Type_4744  Lodgepole Pine                      0.0               7.0                0.0\n3       2785     155     18                               242                             118                             3090        ...          rawah wilderness area  Soil_Type_7746  Lodgepole Pine                      0.0               6.0                0.0\n4       2595      45      2                               153                              -1                              391        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n5       2579     132      6                               300                             -15                               67        ...          rawah wilderness area  Soil_Type_7745  Lodgepole Pine                      0.0               0.0                0.0\n6       2606      45      7                               270                               5                              633        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n7       2605      49      4                               234                               7                              573        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n8       2617      45      9                               240                              56                              666        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n9       2612      59     10                               247                              11                              636        ...          rawah wilderness area  Soil_Type_7745           Aspen                      0.0               0.0                5.0\n\n[10 rows x 16 columns]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242300325_591625981",
+      "id": "20181126-142500_824903212",
+      "dateCreated": "Nov 26, 2018 2:25:00 PM",
+      "dateStarted": "Nov 26, 2018 3:07:52 PM",
+      "dateFinished": "Nov 26, 2018 3:07:52 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import VectorAssembler\n\nfeature_columns \u003d [\"elevation\",\n                   \"aspect\",\n                   \"slope\",\n                   \"horizontal_distance_to_hydrology\",\n                   \"vertical_distance_to_hydrology\",\n                   \"horizontal_distance_to_roadways\",\n                   \"hillshade_9am\",\n                   \"hillshade_noon\",\n                   \"hillshade_3pm\",\n                   \"horizontal_distance_to_fire_points\",\n                   \"wilderness_area_indexed\",\n                   \"soil_type_indexed\"]\n\nfeature_assembler \u003d VectorAssembler(inputCols\u003dfeature_columns, outputCol\u003d\"features\")",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:55 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242321505_770396302",
+      "id": "20181126-142521_1723163959",
+      "dateCreated": "Nov 26, 2018 2:25:21 PM",
+      "dateStarted": "Nov 26, 2018 3:07:55 PM",
+      "dateFinished": "Nov 26, 2018 3:07:55 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncovertype_dataset_prepared \u003d feature_assembler.transform(covertype_dataset_indexed_features)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:07:58 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242340420_939701142",
+      "id": "20181126-142540_1577915863",
+      "dateCreated": "Nov 26, 2018 2:25:40 PM",
+      "dateStarted": "Nov 26, 2018 3:07:58 PM",
+      "dateFinished": "Nov 26, 2018 3:07:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncovertype_dataset_prepared.printSchema()\n",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:08:01 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- elevation: long (nullable \u003d true)\n |-- aspect: long (nullable \u003d true)\n |-- slope: long (nullable \u003d true)\n |-- horizontal_distance_to_hydrology: long (nullable \u003d true)\n |-- vertical_distance_to_hydrology: long (nullable \u003d true)\n |-- horizontal_distance_to_roadways: long (nullable \u003d true)\n |-- hillshade_9am: long (nullable \u003d true)\n |-- hillshade_noon: long (nullable \u003d true)\n |-- hillshade_3pm: long (nullable \u003d true)\n |-- horizontal_distance_to_fire_points: long (nullable \u003d true)\n |-- wilderness_area: string (nullable \u003d true)\n |-- soil_type: string (nullable \u003d true)\n |-- cover_type: string (nullable \u003d true)\n |-- wilderness_area_indexed: double (nullable \u003d true)\n |-- soil_type_indexed: double (nullable \u003d true)\n |-- cover_type_indexed: double (nullable \u003d true)\n |-- features: vector (nullable \u003d true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242352721_1657288489",
+      "id": "20181126-142552_721151450",
+      "dateCreated": "Nov 26, 2018 2:25:52 PM",
+      "dateStarted": "Nov 26, 2018 3:08:01 PM",
+      "dateFinished": "Nov 26, 2018 3:08:01 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.classification import DecisionTreeClassifier\n\ndtree \u003d DecisionTreeClassifier(featuresCol\u003d\"features\",\n                               labelCol\u003d\"cover_type_indexed\",\n                               maxDepth\u003d3,\n                               maxBins\u003d50)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:08:04 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242363454_-894750965",
+      "id": "20181126-142603_1067229383",
+      "dateCreated": "Nov 26, 2018 2:26:03 PM",
+      "dateStarted": "Nov 26, 2018 3:08:04 PM",
+      "dateFinished": "Nov 26, 2018 3:08:04 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ndtree_model \u003d dtree.fit(covertype_dataset_prepared)\n\ndtree_model",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:08:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DecisionTreeClassificationModel (uid\u003dDecisionTreeClassifier_4535876b22323f93b547) of depth 3 with 15 nodes\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242384835_-214652827",
+      "id": "20181126-142624_1001353510",
+      "dateCreated": "Nov 26, 2018 2:26:24 PM",
+      "dateStarted": "Nov 26, 2018 3:08:07 PM",
+      "dateFinished": "Nov 26, 2018 3:08:11 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nprint(dtree_model.toDebugString)",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:08:14 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DecisionTreeClassificationModel (uid\u003dDecisionTreeClassifier_4535876b22323f93b547) of depth 3 with 15 nodes\n  If (feature 0 \u003c\u003d 3043.0)\n   If (feature 0 \u003c\u003d 2531.0)\n    If (feature 11 in {0.0,1.0,3.0,6.0,7.0,8.0,25.0,39.0})\n     Predict: 0.0\n    Else (feature 11 not in {0.0,1.0,3.0,6.0,7.0,8.0,25.0,39.0})\n     Predict: 2.0\n   Else (feature 0 \u003e 2531.0)\n    If (feature 11 in {0.0,2.0,3.0,6.0,7.0,8.0,10.0,12.0,13.0,22.0,24.0,25.0,27.0,29.0,30.0,31.0,32.0,36.0,38.0})\n     Predict: 0.0\n    Else (feature 11 not in {0.0,2.0,3.0,6.0,7.0,8.0,10.0,12.0,13.0,22.0,24.0,25.0,27.0,29.0,30.0,31.0,32.0,36.0,38.0})\n     Predict: 0.0\n  Else (feature 0 \u003e 3043.0)\n   If (feature 0 \u003c\u003d 3315.0)\n    If (feature 11 in {1.0,4.0,5.0,7.0,8.0,9.0,10.0,11.0,12.0,15.0,20.0,23.0,24.0,25.0,27.0,32.0,34.0,35.0,37.0})\n     Predict: 1.0\n    Else (feature 11 not in {1.0,4.0,5.0,7.0,8.0,9.0,10.0,11.0,12.0,15.0,20.0,23.0,24.0,25.0,27.0,32.0,34.0,35.0,37.0})\n     Predict: 1.0\n   Else (feature 0 \u003e 3315.0)\n    If (feature 10 in {1.0})\n     Predict: 3.0\n    Else (feature 10 not in {1.0})\n     Predict: 1.0\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242399755_-1955626276",
+      "id": "20181126-142639_1878354388",
+      "dateCreated": "Nov 26, 2018 2:26:39 PM",
+      "dateStarted": "Nov 26, 2018 3:08:14 PM",
+      "dateFinished": "Nov 26, 2018 3:08:14 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom spark_tree_plotting import plot_tree\n",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:08:18 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242845704_371944226",
+      "id": "20181126-143405_1656767972",
+      "dateCreated": "Nov 26, 2018 2:34:05 PM",
+      "dateStarted": "Nov 26, 2018 3:08:18 PM",
+      "dateFinished": "Nov 26, 2018 3:08:18 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nfrom spark_tree_plotting import plot_tree\n\ntree_plot \u003d plot_tree(dtree_model,\n                      featureNames\u003dfeature_columns,\n                      categoryNames\u003d{\"wilderness_area_indexed\":string_indexer_wilderness_model.labels,\n                                     \"soil_type_indexed\":string_indexer_soil_model.labels},\n                      classNames\u003dstring_indexer_cover_model.labels,\n                      filled\u003dTrue,          # With color!\n                      roundedCorners\u003dTrue,  # Rounded corners in the nodes\n                      roundLeaves\u003dTrue      # Leaves will be ellipses instead of rectangles\n                     )",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:10:39 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3899061564720159742.py\", line 367, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3899061564720159742.py\", line 360, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 9, in \u003cmodule\u003e\n  File \"/tmp/spark-1b4dc7a1-154a-40e6-b690-082ebb26cf72/userFiles-a9cf4e82-2492-480a-98b1-a9cec1c79e50/spark-tree-plotting_0.2.jar/spark_tree_plotting.py\", line 436, in plot_tree\n    roundLeaves\u003droundLeaves\n  File \"/opt/conda/lib/python2.7/site-packages/pydot/__init__.py\", line 218, in graph_from_dot_data\n    return dot_parser.parse_dot_data(data)\n  File \"/opt/conda/lib/python2.7/site-packages/pydot/dot_parser.py\", line 511, in parse_dot_data\n    if data.startswith(codecs.BOM_UTF8):\nUnicodeDecodeError: \u0027ascii\u0027 codec can\u0027t decode byte 0xef in position 0: ordinal not in range(128)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242412888_646061111",
+      "id": "20181126-142652_1544354442",
+      "dateCreated": "Nov 26, 2018 2:26:52 PM",
+      "dateStarted": "Nov 26, 2018 3:10:39 PM",
+      "dateFinished": "Nov 26, 2018 3:10:39 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "Nov 26, 2018 3:06:55 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python"
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543242439051_833464473",
+      "id": "20181126-142719_1782363293",
+      "dateCreated": "Nov 26, 2018 2:27:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "~Trash/Decision Trees",
+  "id": "2DWXXCPMJ",
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

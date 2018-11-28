@@ -1,0 +1,203 @@
+{
+  "paragraphs": [
+    {
+      "text": "val textFile \u003d spark.read.format(\"csv\").option(\"header\", \"true\").load(\"/data/population-vs-prices.csv\")\n// val textFile \u003d sc.textFile(\"/data/population-vs-prices.csv\")\ntextFile.show()\ntextFile.toDF().registerTempTable(\"population\")",
+      "user": "anonymous",
+      "dateUpdated": "Sep 24, 2018 3:45:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/text"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "textFile: org.apache.spark.sql.DataFrame \u003d [2014 rank: string, City: string ... 4 more fields]\n+---------+-------------+----------+----------+------------------------+-----------------------+\n|2014 rank|         City|     State|State Code|2014 Population estimate|2015 median sales price|\n+---------+-------------+----------+----------+------------------------+-----------------------+\n|      101|   Birmingham|   Alabama|        AL|                  212247|                  162.9|\n|      125|   Huntsville|   Alabama|        AL|                  188226|                  157.7|\n|      122|       Mobile|   Alabama|        AL|                  194675|                  122.5|\n|      114|   Montgomery|   Alabama|        AL|                  200481|                    129|\n|       64|Anchorage[19]|    Alaska|        AK|                  301010|                   null|\n|       78|     Chandler|   Arizona|        AZ|                  254276|                   null|\n|       86|  Gilbert[20]|   Arizona|        AZ|                  239277|                   null|\n|       88|     Glendale|   Arizona|        AZ|                  237517|                   null|\n|       38|         Mesa|   Arizona|        AZ|                  464704|                   null|\n|      148|       Peoria|   Arizona|        AZ|                  166934|                   null|\n|        6|      Phoenix|   Arizona|        AZ|                 1537058|                  206.1|\n|       95|   Scottsdale|   Arizona|        AZ|                  230512|                   null|\n|      215|     Surprise|   Arizona|        AZ|                  126275|                   null|\n|      142|        Tempe|   Arizona|        AZ|                  172816|                   null|\n|       33|       Tucson|   Arizona|        AZ|                  527972|                  178.1|\n|      119|  Little Rock|  Arkansas|        AR|                  197706|                  131.8|\n|       56|      Anaheim|California|        CA|                  346997|                  685.7|\n|      261|      Antioch|California|        CA|                  108930|                   null|\n|       52|  Bakersfield|California|        CA|                  368759|                   null|\n|      227|     Berkeley|California|        CA|                  118853|                   null|\n+---------+-------------+----------+----------+------------------------+-----------------------+\nonly showing top 20 rows\n\nwarning: there was one deprecation warning; re-run with -deprecation for details\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1537727210623_341203350",
+      "id": "20180923-182650_93902436",
+      "dateCreated": "Sep 23, 2018 6:26:50 PM",
+      "dateStarted": "Sep 24, 2018 3:22:47 PM",
+      "dateFinished": "Sep 24, 2018 3:22:48 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT State, SUM(`2014 Population estimate`) FROM population GROUP BY State",
+      "user": "anonymous",
+      "dateUpdated": "Sep 24, 2018 3:40:53 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 746.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql"
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "State\tsum(CAST(2014 Population estimate AS DOUBLE))\nUtah\t551100.0\nHawai\u0027i\t350399.0\nMinnesota\t816249.0\nOhio\t2143536.0\nArkansas\t197706.0\nOregon\t1051450.0\nTexas\t1.2355786E7\nNorth Dakota\t115863.0\nPennsylvania\t1984813.0\nConnecticut\t640184.0\nNebraska\t719595.0\nNevada\t1358822.0\nWashington\t1623569.0\nIllinois\t3709778.0\nOklahoma\t1243050.0\nDistrict of Columbia\t658893.0\nAlaska\t301010.0\nNew Mexico\t658577.0\nMissouri\t1187997.0\nRhode Island\t179154.0\nGeorgia\t1219538.0\nMontana\t108869.0\nMichigan\t1373272.0\nVirginia\t1618051.0\nNorth Carolina\t2605063.0\nKansas\t982851.0\nNew Jersey\t818183.0\nMaryland\t622793.0\nAlabama\t795629.0\nArizona\t3957341.0\nIowa\t440863.0\nMassachusetts\t1212530.0\nKentucky\t923577.0\nLouisiana\t937523.0\nMississippi\t171155.0\nNew Hampshire\t110448.0\nTennessee\t1926694.0\nFlorida\t4447487.0\nIndiana\t1227656.0\nIdaho\t216282.0\nSouth Carolina\t368929.0\nSouth Dakota\t168586.0\nCalifornia\t1.9233075E7\nNew York\t9304695.0\nWisconsin\t950224.0\nColorado\t2445630.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1537802516237_-586400587",
+      "id": "20180924-152156_1277155218",
+      "dateCreated": "Sep 24, 2018 3:21:56 PM",
+      "dateStarted": "Sep 24, 2018 3:40:32 PM",
+      "dateFinished": "Sep 24, 2018 3:40:33 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nimport matplotlib.pyplot as plt\n\ntextFile \u003d spark.read.format(\"csv\").option(\"header\", \"true\").load(\"/data/population-vs-prices.csv\")\ntextFile.toPandas()\nplt.plot([1,2,3])",
+      "user": "anonymous",
+      "dateUpdated": "Oct 5, 2018 7:47:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/text"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8915146914378900417.py\", line 367, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-8915146914378900417.py\", line 355, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 3, in \u003cmodule\u003e\n  File \"/zeppelin/interpreter/spark/pyspark/pyspark.zip/pyspark/sql/dataframe.py\", line 1575, in toPandas\n    import pandas as pd\nImportError: No module named pandas\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1537802957401_-1506277723",
+      "id": "20180924-152917_326011275",
+      "dateCreated": "Sep 24, 2018 3:29:17 PM",
+      "dateStarted": "Oct 5, 2018 7:47:31 AM",
+      "dateFinished": "Oct 5, 2018 7:47:51 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n\nless /data/population-vs-prices.csv\n",
+      "user": "anonymous",
+      "dateUpdated": "Sep 23, 2018 6:02:42 PM",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2014 rank,City,State,State Code,2014 Population estimate,2015 median sales price\r\n101,Birmingham,Alabama,AL,212247,162.9\r\n125,Huntsville,Alabama,AL,188226,157.7\r\n122,Mobile,Alabama,AL,194675,122.5\r\n114,Montgomery,Alabama,AL,200481,129\r\n64,Anchorage[19],Alaska,AK,301010,\r\n78,Chandler,Arizona,AZ,254276,\r\n86,Gilbert[20],Arizona,AZ,239277,\r\n88,Glendale,Arizona,AZ,237517,\r\n38,Mesa,Arizona,AZ,464704,\r\n148,Peoria,Arizona,AZ,166934,\r\n6,Phoenix,Arizona,AZ,1537058,206.1\r\n95,Scottsdale,Arizona,AZ,230512,\r\n215,Surprise,Arizona,AZ,126275,\r\n142,Tempe,Arizona,AZ,172816,\r\n33,Tucson,Arizona,AZ,527972,178.1\r\n119,Little Rock,Arkansas,AR,197706,131.8\r\n56,Anaheim,California,CA,346997,685.7\r\n261,Antioch,California,CA,108930,\r\n52,Bakersfield,California,CA,368759,\r\n227,Berkeley,California,CA,118853,\r\n276,Burbank,California,CA,105368,\r\n245,Carlsbad,California,CA,112299,\r\n75,Chula Vista,California,CA,260988,\r\n291,Clovis,California,CA,102189,\r\n212,Concord,California,CA,127522,\r\n153,Corona,California,CA,161486,\r\n243,Costa Mesa,California,CA,112784,\r\n274,Daly City,California,CA,106094,\r\n240,Downey,California,CA,114172,\r\n285,El Cajon,California,CA,103091,\r\n234,El Monte,California,CA,116631,\r\n151,Elk Grove,California,CA,163553,\r\n167,Escondido,California,CA,150243,\r\n250,Fairfield,California,CA,111125,\r\n108,Fontana,California,CA,204950,\r\n97,Fremont,California,CA,228758,\r\n34,Fresno,California,CA,515986,\r\n186,Fullerton,California,CA,139677,\r\n136,Garden Grove,California,CA,175078,\r\n116,Glendale,California,CA,200167,\r\n161,Hayward,California,CA,154612,\r\n112,Huntington Beach,California,CA,200809,\r\n248,Inglewood,California,CA,111905,\r\n82,Irvine,California,CA,248531,\r\n154,Lancaster,California,CA,161043,\r\n36,Long Beach,California,CA,473577,\r\n2,Los Angeles,California,CA,3928864,434.7\r\n104,Modesto,California,CA,209286,\r\n110,Moreno Valley,California,CA,202976,\r\n268,Murrieta,California,CA,108368,\r\n270,Norwalk,California,CA,107096,\r\n45,Oakland,California,CA,413775,\r\n137,Oceanside,California,CA,174558,\r\n146,Ontario,California,CA,169089,\r\n185,Orange,California,CA,139812,\r\n106,Oxnard,California,CA,205437,\r\n156,Palmdale,California,CA,158279,\r\n184,Pasadena,California,CA,140881,\r\n165,Pomona,California,CA,153350,\r\n138,Rancho Cucamonga,California,CA,174305,\r\n288,Rialto,California,CA,102741,\r\n265,Richmond,California,CA,108565,\r\n59,Riverside,California,CA,319504,281\r\n205,Roseville,California,CA,128615,\r\n35,Sacramento,California,CA,485199,275.8\r\n158,Salinas,California,CA,156677,\r\n100,San Bernardino,California,CA,215213,\r\n8,San Diego,California,CA,1381069,510.3\r\n13,San Francisco[10],California,CA,852469,748.3\r\n10,San Jose,California,CA,1015785,900\r\n286,San Mateo,California,CA,102893,\r\n57,Santa Ana,California,CA,334909,\r\n219,Santa Clara,California,CA,122192,\r\n133,Santa Clarita,California,CA,181557,\r\n284,Santa Maria,California,CA,103410,\r\n139,Santa Rosa,California,CA,174170,\r\n214,Simi Valley,California,CA,126871,\r\n63,Stockton,California,CA,302389,\r\n168,Sunnyvale,California,CA,149980,\r\n259,Temecula,California,CA,109428,\r\n201,Thousand Oaks,California,CA,129342,\r\n172,Torrance,California,CA,148495,\r\n224,Vallejo,California,CA,120228,\r\n258,Ventura[29],California,CA,109484,\r\n220,Victorville,California,CA,121901,\r\n202,Visalia,California,CA,129281,\r\n266,West Covina,California,CA,108455,\r\n242,Arvada,Colorado,CO,113574,\r\n54,Aurora,Colorado,CO,353108,\r\n278,Boulder,Colorado,CO,105112,442.2\r\n269,Centennial,Colorado,CO,107201,\r\n42,Colorado Springs,Colorado,CO,445830,220.1\r\n21,Denver[12],Colorado,CO,663862,338.1\r\n159,Fort Collins,Colorado,CO,156480,\r\n169,Lakewood,Colorado,CO,149643,\r\n267,Pueblo,Colorado,CO,108423,\r\n197,Thornton,Colorado,CO,130307,\r\n247,Westminster,Colorado,CO,112090,\r\n175,Bridgeport,Connecticut,CT,147612,342.7\r\n218,Hartford,Connecticut,CT,124705,202.6\r\n198,New Haven,Connecticut,CT,130282,205.1\r\n208,Stamford,Connecticut,CT,128278,\r\n260,Waterbury,Connecticut,CT,109307,\r\n22,Washington[13],District of Columbia,DC,658893,367.8\r\n144,Cape Coral,Florida,FL,169854,208\r\n253,Clearwater,Florida,FL,110703,\r\n211,Coral Springs,Florida,FL,127952,\r\n135,Fort Lauderdale,Florida,FL,176013,\r\n206,Gainesville,Florida,FL,128460,169.9\r\n90,Hialeah,Florida,FL,235563,\r\n173,Hollywood,Florida,FL,148047,\r\n12,Jacksonville[9],Florida,FL,853382,182.5\r\n290,Lakeland,Florida,FL,102346,136\r\n44,Miami,Florida,FL,430332,269.1\r\n246,Miami Gardens,Florida,FL,112265,\r\n192,Miramar,Florida,FL,134989,\r\n73,Orlando,Florida,FL,262372,\r\n275,Palm Bay,Florida,FL,105838,145\r\n150,Pembroke Pines,Florida,FL,164626,\r\n273,Pompano Beach,Florida,FL,106105,\r\n140,Port St. Lucie,Florida,FL,174110,172\r\n79,St. Petersburg,Florida,FL,253693,\r\n126,Tallahassee,Florida,FL,188107,170.5\r\n53,Tampa,Florida,FL,358699,156\r\n281,West Palm Beach,Florida,FL,104031,\r\n225,Athens[28],Georgia,GA,119648,\r\n39,Atlanta,Georgia,GA,456002,158\r\n121,Augusta[24],Georgia,GA,196741,\r\n111,Columbus[23],Georgia,GA,200887,\r\n164,Macon,Georgia,GA,,\r\n292,Sandy Springs,Georgia,GA,101908,\r\n181,Savannah,Georgia,GA,144352,\r\n55,Honolulu[2],Hawai\u0027i,HI,350399,699.3\r\n99,Boise[22],Idaho,ID,216282,178.7\r\n115,Aurora,Illinois,IL,200456,\r\n3,Chicago,Illinois,IL,2722389,192.5\r\n251,Elgin,Illinois,IL,111117,\r\n174,Joliet,Illinois,IL,147928,\r\n178,Naperville,Illinois,IL,146128,\r\n236,Peoria,Illinois,IL,115828,105.2\r\n171,Rockford,Illinois,IL,149123,78.6\r\n233,Springfield,Illinois,IL,116809,115.2\r\n223,Evansville,Indiana,IN,120346,\r\n77,Fort Wayne,Indiana,IN,258522,106.3\r\n14,Indianapolis[11],Indiana,IN,848788,139.2\r\n203,Cedar Rapids,Iowa,IA,129195,156.9\r\n289,Davenport,Iowa,IA,102448,109.4\r\n105,Des Moines,Iowa,IA,209220,\r\n170,Kansas City[26],Kansas,KS,149636,\r\n194,Olathe,Kansas,KS,133062,\r\n128,Overland Park,Kansas,KS,184525,\r\n213,Topeka,Kansas,KS,127215,105.3\r\n49,Wichita,Kansas,KS,388413,126\r\n61,Lexington[18],Kentucky,KY,310797,141.2\r\n30,Louisville[16],Kentucky,KY,612780,141.1\r\n96,Baton Rouge[21],Louisiana,LA,228895,177.2\r\n216,Lafayette[27],Louisiana,LA,126066,\r\n50,New Orleans[17],Louisiana,LA,384320,\r\n117,Shreveport,Louisiana,LA,198242,151.6\r\n26,Baltimore[15],Maryland,MD,622793,223.1\r\n24,Boston,Massachusetts,MA,655884,374.6\r\n257,Cambridge,Massachusetts,MA,109694,\r\n255,Lowell,Massachusetts,MA,109945,\r\n162,Springfield,Massachusetts,MA,153991,183.9\r\n131,Worcester,Massachusetts,MA,183016,226.9\r\n229,Ann Arbor,Michigan,MI,117770,\r\n18,Detroit,Michigan,MI,680250,\r\n123,Grand Rapids,Michigan,MI,193792,\r\n238,Lansing,Michigan,MI,114620,114.6\r\n196,Sterling Heights,Michigan,MI,131741,\r\n191,Warren,Michigan,MI,135099,\r\n46,Minneapolis,Minnesota,MN,407207,209.4\r\n249,Rochester,Minnesota,MN,111402,\r\n66,Saint Paul,Minnesota,MN,297640,\r\n143,Jackson,Mississippi,MS,171155,154.1\r\n232,Columbia,Missouri,MO,116906,\r\n231,Independence,Missouri,MO,117494,\r\n37,Kansas City,Missouri,MO,470800,153\r\n149,Springfield,Missouri,MO,165378,116.5\r\n60,St. Louis[15],Missouri,MO,317419,\r\n262,Billings,Montana,MT,108869,\r\n72,Lincoln,Nebraska,NE,272996,150.2\r\n41,Omaha,Nebraska,NE,446599,148.1\r\n71,Henderson,Nevada,NV,277440,\r\n29,Las Vegas,Nevada,NV,613599,205.9\r\n94,North Las Vegas,Nevada,NV,230788,\r\n89,Reno,Nevada,NV,236995,268.7\r\n254,Manchester,New Hampshire,NH,110448,237.4\r\n204,Elizabeth,New Jersey,NJ,128705,\r\n74,Jersey City,New Jersey,NJ,262146,\r\n69,Newark,New Jersey,NJ,280579,350.8\r\n177,Paterson,New Jersey,NJ,146753,\r\n32,Albuquerque,New Mexico,NM,557169,172.2\r\n294,Las Cruces,New Mexico,NM,101408,\r\n76,Buffalo,New York,NY,258703,117.3\r\n1,New York[6],New York,NY,8491079,388.6\r\n103,Rochester,New York,NY,209983,118.9\r\n182,Syracuse,New York,NY,144263,118.3\r\n113,Yonkers,New York,NY,200667,\r\n160,Cary[25],North Carolina,NC,155227,\r\n17,Charlotte,North Carolina,NC,809958,197.2\r\n81,Durham,North Carolina,NC,251893,196.9\r\n109,Fayetteville,North Carolina,NC,203948,145\r\n67,Greensboro,North Carolina,NC,282586,138.3\r\n263,High Point,North Carolina,NC,108629,\r\n43,Raleigh,North Carolina,NC,439896,218.9\r\n241,Wilmington,North Carolina,NC,113657,197.5\r\n87,Winston�Salem,North Carolina,NC,239269,138.6\r\n235,Fargo,North Dakota,ND,115863,180\r\n118,Akron,Ohio,OH,197859,95.4\r\n65,Cincinnati,Ohio,OH,298165,135\r\n48,Cleveland,Ohio,OH,389521,105.9\r\n15,Columbus,Ohio,OH,835957,149.9\r\n183,Dayton,Ohio,OH,141003,107.2\r\n68,Toledo,Ohio,OH,281031,83.8\r\n280,Broken Arrow,Oklahoma,OK,104726,\r\n228,Norman,Oklahoma,OK,118040,\r\n27,Oklahoma City,Oklahoma,OK,620602,\r\n47,Tulsa,Oklahoma,OK,399682,145.1\r\n155,Eugene,Oregon,OR,160561,211.3\r\n256,Gresham,Oregon,OR,109892,\r\n28,Portland,Oregon,OR,619360,289.4\r\n152,Salem,Oregon,OR,161637,193.9\r\n226,Allentown,Pennsylvania,PA,119104,162.7\r\n5,Philadelphia[8],Pennsylvania,PA,1560297,204.9\r\n62,Pittsburgh,Pennsylvania,PA,305412,\r\n134,Providence,Rhode Island,RI,179154,233.3\r\n200,Charleston,South Carolina,SC,130113,\r\n195,Columbia,South Carolina,SC,132067,\r\n271,North Charleston,South Carolina,SC,106749,\r\n147,Sioux Falls,South Dakota,SD,168586,159.5\r\n141,Chattanooga,Tennessee,TN,173778,143.6\r\n176,Clarksville,Tennessee,TN,146806,\r\n129,Knoxville,Tennessee,TN,184281,149.2\r\n23,Memphis,Tennessee,TN,656861,132.1\r\n222,Murfreesboro,Tennessee,TN,120954,\r\n25,Nashville[14],Tennessee,TN,644014,186.4\r\n221,Abilene,Texas,TX,120958,145.7\r\n120,Amarillo,Texas,TX,197254,144.4\r\n51,Arlington,Texas,TX,383204,\r\n11,Austin,Texas,TX,912791,249.1\r\n230,Beaumont,Texas,TX,117585,133.3\r\n130,Brownsville,Texas,TX,183046,\r\n207,Carrollton,Texas,TX,128353,\r\n282,College Station,Texas,TX,103483,\r\n58,Corpus Christi,Texas,TX,320434,172.9\r\n9,Dallas,Texas,TX,1281047,192.5\r\n209,Denton,Texas,TX,128205,\r\n19,El Paso,Texas,TX,679036,138.4\r\n16,Fort Worth,Texas,TX,812238,\r\n179,Frisco,Texas,TX,145035,\r\n91,Garland,Texas,TX,235501,\r\n127,Grand Prairie,Texas,TX,185453,\r\n4,Houston[7],Texas,TX,2239558,200.3\r\n93,Irving,Texas,TX,232406,\r\n188,Killeen,Texas,TX,138154,\r\n80,Laredo,Texas,TX,252309,\r\n287,Lewisville,Texas,TX,102889,\r\n85,Lubbock,Texas,TX,243839,\r\n187,McAllen,Texas,TX,138596,\r\n157,McKinney,Texas,TX,156767,\r\n180,Mesquite,Texas,TX,144416,\r\n210,Midland,Texas,TX,128037,\r\n239,Odessa,Texas,TX,114597,\r\n163,Pasadena,Texas,TX,153887,\r\n283,Pearland,Texas,TX,103441,\r\n70,Plano,Texas,TX,278480,\r\n264,Richardson,Texas,TX,108617,\r\n244,Round Rock,Texas,TX,112744,\r\n7,San Antonio,Texas,TX,1436697,184.7\r\n293,Tyler,Texas,TX,101421,\r\n199,Waco,Texas,TX,130194,\r\n277,Wichita Falls,Texas,TX,105114,\r\n237,Provo,Utah,UT,114801,\r\n124,Salt Lake City,Utah,UT,190884,243.3\r\n252,West Jordan,Utah,UT,110920,\r\n193,West Valley City,Utah,UT,134495,\r\n166,Alexandria[15],Virginia,VA,150575,\r\n92,Chesapeake[15],Virginia,VA,233371,\r\n189,Hampton[15],Virginia,VA,136879,\r\n132,Newport News[15],Virginia,VA,182965,\r\n84,Norfolk[15],Virginia,VA,245428,\r\n98,Richmond[15],Virginia,VA,217853,212.5\r\n40,Virginia Beach[15],Virginia,VA,450980,190\r\n190,Bellevue,Washington,WA,136426,\r\n272,Everett,Washington,WA,106736,\r\n217,Kent,Washington,WA,125560,\r\n20,Seattle,Washington,WA,668342,352.4\r\n102,Spokane,Washington,WA,212052,180.2\r\n107,Tacoma,Washington,WA,205159,\r\n145,Vancouver,Washington,WA,169294,\r\n279,Green Bay,Wisconsin,WI,104891,\r\n83,Madison,Wisconsin,WI,245691,226.2\r\n31,Milwaukee,Wisconsin,WI,599642,195.4"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1537725335444_-53325736",
+      "id": "20180923-175535_2110112951",
+      "dateCreated": "Sep 23, 2018 5:55:35 PM",
+      "dateStarted": "Sep 23, 2018 6:02:43 PM",
+      "dateFinished": "Sep 23, 2018 6:02:43 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1537724469643_-1456493462",
+      "id": "20180923-174109_894971036",
+      "dateCreated": "Sep 23, 2018 5:41:09 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "~Trash/PopulationVsPrices",
+  "id": "2DRKQ5A1J",
+  "angularObjects": {
+    "2DUMBMS1A:shared_process": [],
+    "2DTF61B3J:shared_process": [],
+    "2DWQSVC2S:shared_process": [],
+    "2DTVGQUEW:shared_process": [],
+    "2DVNRPTVY:shared_process": [],
+    "2DUA4D44G:shared_process": [],
+    "2DUTZGP8F:shared_process": [],
+    "2DU4945XS:shared_process": [],
+    "2DWBF1GWK:shared_process": [],
+    "2DTSEVNKZ:shared_process": [],
+    "2DT8AC5SS:shared_process": [],
+    "2DWFYXSAN:shared_process": [],
+    "2DWR37K8W:shared_process": [],
+    "2DWD4QW7F:shared_process": [],
+    "2DVJ8J7H8:shared_process": [],
+    "2DW9GQSMU:shared_process": [],
+    "2DV7348GQ:shared_process": [],
+    "2DTMCGH4J:shared_process": [],
+    "2DTTQA5BM:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
