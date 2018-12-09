@@ -13,7 +13,7 @@ Apache Spark has quickly become one of the most popular frameworks for Big Data 
 This workshop is designed to familiarize attendees with Apache Spark – a well-known engine for fast Big Data processing. Attendees do not need to have prior knowledge of Apache Spark or Hadoop.
 
 ## Agenda
-1. [Theoretical introduction](spark-introduction/README.md) *1.5h*
+1. [Theoretical introduction](spark-introduction/README.md) *1.5h (presentation approx. 40 minutes)*
     1. Introduction
         * What is Apache Spark?
         * What was before?

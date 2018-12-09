@@ -48,7 +48,30 @@ File Metadata
 4-byte magic number "PAR1"
 ```
 
-##Assignemnt 2: Analyse Youtoube trending videos dataset
+## Useful functions
+### Query a dataset using Spark SQL
+```java
+// Register a dataset with Spark SQL
+dataset.createOrReplaceTempView("my_table");
+// Then you can query that table
+spark.sql("SELECT * FROM my_table");
+```
+
+### Select and rename a column
+```java
+dataset.select(dataset.col("name").as("another_name"))
+```
+
+### Save a dataset as avro
+```java
+dataset
+        .write()
+        .format("avro")
+        .mode(SaveMode.Overwrite)
+        .save("spark-sql/data/Tags.avro");
+```
+
+## Assignemnt 2: Analyse Youtoube trending videos dataset
 
 1. Read trending videos from [data/USvideos.parquet](data/USvideos.parquet)
 2. Read corresponding categories from [data/US_category_id.json](data/US_category_id.json) to the form of a flat table (no nested structures). The output should look like this:

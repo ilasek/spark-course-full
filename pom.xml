@@ -76,6 +76,11 @@
                 <version>${spark.version}</version>
                 <scope>${hadoop.scope}</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-avro_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>postgresql</groupId>

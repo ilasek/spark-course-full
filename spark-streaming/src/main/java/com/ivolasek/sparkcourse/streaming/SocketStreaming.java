@@ -2,6 +2,7 @@ package com.ivolasek.sparkcourse.streaming;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.Dataset;
@@ -14,8 +15,8 @@ import org.apache.spark.sql.streaming.StreamingQueryException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * <p>This sample code demonstrates Spark streaming capabilities by performing a sentiment analysis on a live stream of
- * tweets containing a word sick.</p>
+ * <p>This sample code demonstrates Spark streaming capabilities by reading data from a socket simulating a Twitter api
+ * and sending them to a Kafka sink.</p>
  */
 public class SocketStreaming {
 
@@ -39,7 +40,7 @@ public class SocketStreaming {
         Dataset<String> tweets = lines.as(Encoders.STRING())
                 .map(
                         (MapFunction<String, Tweet>) line ->
-                                new Tweet(new Date(), line),
+                                new Tweet(UUID.randomUUID().toString(), new Date(), line),
                         Encoders.bean(Tweet.class))
                 .map((MapFunction<Tweet, String>) tweet -> {
                     ObjectMapper jacksonMapper = new ObjectMapper();

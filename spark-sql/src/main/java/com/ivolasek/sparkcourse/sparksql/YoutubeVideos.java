@@ -33,8 +33,8 @@ public class YoutubeVideos {
 
         Dataset<Row> flatCategories = flattenCategories(categories);
 
-        videos.registerTempTable("videos");
-        flatCategories.registerTempTable("categories");
+        videos.createOrReplaceTempView("videos");
+        flatCategories.createOrReplaceTempView("categories");
 
         spark.sql("SELECT SUM(views) AS total_views, category_id, category_name FROM videos v JOIN categories c ON(v.category_id = c.id) " +
                 "GROUP BY category_id, category_name ORDER BY SUM(views) DESC LIMIT 10").show();
@@ -44,7 +44,7 @@ public class YoutubeVideos {
         videos.select("video_id", "tags").limit(2).show(false);
         normalizeTags(videos)
                 .write()
-                .format("com.databricks.spark.avro")
+                .format("avro")
                 .mode(SaveMode.Overwrite)
                 .save("spark-sql/data/Tags.avro");
 

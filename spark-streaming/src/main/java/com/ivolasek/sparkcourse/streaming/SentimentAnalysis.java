@@ -15,6 +15,7 @@ import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.apache.spark.sql.functions.*;
 
 
 public class SentimentAnalysis {
@@ -38,19 +39,18 @@ public class SentimentAnalysis {
                 .option("inferSchema", "true")
                 .csv("spark-streaming/data/sentiment.tsv")
                 .toDF(schema);
-        sentiments.registerTempTable("sentiments");
+        sentiments.createOrReplaceTempView("sentiments");
 
         StreamingQuery query = tweets
                 .selectExpr("CAST(value AS STRING)")
                 .as(Encoders.STRING())
                 .map((MapFunction<String, Tweet>) json -> new ObjectMapper().readValue(json, Tweet.class), Encoders.bean(Tweet.class))
-                .selectExpr("CAST(text AS STRING) AS text", "CAST(createdAt.time / 1000 AS TIMESTAMP) AS createdAt")
+                .selectExpr("id", "CAST(text AS STRING) AS text", "CAST(createdAt.time / 1000 AS TIMESTAMP) AS createdAt")
                 .join(sentiments, expr("text LIKE CONCAT('%', word, '%')"), "leftOuter")
-                .withWatermark("createdAt", "1 second")
-                .groupBy("text", "createdAt")
+                .groupBy("id", "text", "createdAt")
                 .sum("sentiment")
                 .writeStream()
-                .outputMode("append")
+                .outputMode("update")
                 .option("truncate", false)
                 .format("console")
                 .start();

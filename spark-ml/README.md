@@ -6,7 +6,13 @@ You can walk through [Spark ML introduction](https://www.edureka.co/blog/spark-m
 
 ## Useful classes
 * [VectorAssembler](https://spark.apache.org/docs/latest/ml-features.html#vectorassembler)
+    ```scala
+    val assembler = new VectorAssembler()
+      .setInputCols(Array("hour", "mobile", "userFeatures"))
+      .setOutputCol("features")
+    ```
 * [LinearRegression](https://spark.apache.org/docs/latest/ml-classification-regression.html#linear-regression)
+
 * [Pipelines](https://spark.apache.org/docs/latest/ml-pipeline.html)
 
 ## Assignment

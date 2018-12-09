@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Time;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
@@ -58,7 +59,7 @@ public class TwitterStreaming {
         String[] filters = {"sick"};
         JavaReceiverInputDStream<Status> stream = TwitterUtils.createStream(ssc, auth(), filters);
 
-        JavaDStream<Tweet> tweets = stream.map(status -> new Tweet(new Time(status.getCreatedAt().getTime()), status.getText()));
+        JavaDStream<Tweet> tweets = stream.map(status -> new Tweet(UUID.randomUUID().toString(), new Time(status.getCreatedAt().getTime()), status.getText()));
         printStream(tweets, spark);
 //        writeToKafka(tweets, spark);
 

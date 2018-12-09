@@ -4,24 +4,26 @@
  */
 package com.ivolasek.sparkcourse.streaming;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonGetter;
+
+import java.util.Date;
+import java.util.UUID;
 
 
 /**
  * Utility class to represent a simplified tweet structure.
  */
 public class Tweet {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private String id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date createdAt;
     private String text;
 
     public Tweet() {
     }
 
-    public  Tweet(Date createdAt, String text) {
+    public Tweet(String id, Date createdAt, String text) {
+        this.id = id;
         this.createdAt = createdAt;
         this.text = text;
     }
@@ -42,10 +44,19 @@ public class Tweet {
         return text;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Tweet{" +
-                "createdAt=" + createdAt +
+                "id=" + id +
+                ", createdAt=" + createdAt +
                 ", text='" + text + '\'' +
                 '}';
     }
