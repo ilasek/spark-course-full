@@ -1,18 +1,18 @@
 {
   "paragraphs": [
     {
-      "text": "%sh\npip install pandas",
+      "text": "%sh\n#unset HTTP_PROXY\n#unset HTTPS_PROXY\npip install pandas",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:50:47 PM",
+      "dateUpdated": "Dec 9, 2018 10:19:28 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "sh",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sh"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -31,15 +31,15 @@
       "jobName": "paragraph_1543254608312_-1324344532",
       "id": "20181126-175008_86662438",
       "dateCreated": "Nov 26, 2018 5:50:08 PM",
-      "dateStarted": "Nov 26, 2018 5:50:47 PM",
-      "dateFinished": "Nov 26, 2018 5:51:04 PM",
+      "dateStarted": "Dec 9, 2018 10:19:05 AM",
+      "dateFinished": "Dec 9, 2018 10:19:11 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\n\nimport org.apache.spark.ml.linalg.Vectors\n\nval data \u003d spark.createDataFrame(Seq(\n\t(-12.0,  -4.9),\n\t( -6.0,  -4.5),\n\t( -7.2,  -4.1),\n\t( -5.0,  -3.2),\n\t( -2.0,  -3.0),\n\t( -3.1,  -2.1),\n\t( -4.0,  -1.5),\n\t( -2.2,  -1.2),\n\t( -2.0,  -0.7),\n\t( 1.0,   -0.5),\n\t( -0.7,  -0.2),\n\t( 1.2,   0.1),\n\t( 2.2,   0.3),  \n\t( 6.5,   0.52),\n\t( 4.2,   0.72),\n\t( 8.6,   1.1),\n\t( 9.5,   2.3),\n\t( 14.52, 3.4),\n\t( 12.9,  3.61), \n\t( 16.3,  3.8)\n)).toDF(\"y\", \"x\")\ndata.createOrReplaceTempView(\"data\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:41:33 PM",
+      "dateUpdated": "Dec 9, 2018 10:19:29 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -67,15 +67,15 @@
       "jobName": "paragraph_1543250545289_1058140789",
       "id": "20181126-164225_1331547595",
       "dateCreated": "Nov 26, 2018 4:42:25 PM",
-      "dateStarted": "Nov 26, 2018 5:41:33 PM",
-      "dateFinished": "Nov 26, 2018 5:41:36 PM",
+      "dateStarted": "Dec 9, 2018 10:19:29 AM",
+      "dateFinished": "Dec 9, 2018 10:19:47 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\nSELECT * FROM data\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:41:33 PM",
+      "dateUpdated": "Dec 9, 2018 10:19:51 AM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -112,15 +112,15 @@
       "jobName": "paragraph_1543250565352_785753892",
       "id": "20181126-164245_222964297",
       "dateCreated": "Nov 26, 2018 4:42:45 PM",
-      "dateStarted": "Nov 26, 2018 5:41:33 PM",
-      "dateFinished": "Nov 26, 2018 5:41:37 PM",
+      "dateStarted": "Dec 9, 2018 10:19:51 AM",
+      "dateFinished": "Dec 9, 2018 10:19:51 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nimport org.apache.spark.ml.Pipeline\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.regression.{LinearRegression, LinearRegressionModel}\n\n// Data preprocessing - prepare data into a feature vector\nval features \u003d new VectorAssembler()\n    .setInputCols(Array(\"x\"))\n    .setOutputCol(\"features\")\n\n// ------------------------------------------\n// DEBUG output\nval transformed \u003d features.transform(data)\ntransformed.show()\n// ------------------------------------------\n\n// Prepare the model - LinearRegression\nval linreg \u003d new LinearRegression().setLabelCol(\"y\")\n\nval pipeline \u003d new Pipeline().setStages(Array(features, linreg))\nval model \u003d pipeline.fit(data)\n\n// ------------------------------------------\n// DEBUG output\nval model2 \u003d linreg.fit(transformed)\n// ------------------------------------------",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:41:33 PM",
+      "dateUpdated": "Dec 9, 2018 8:04:56 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -140,7 +140,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.spark.ml.Pipeline\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.regression.{LinearRegression, LinearRegressionModel}\nfeatures: org.apache.spark.ml.feature.VectorAssembler \u003d vecAssembler_4cb98974106b\ntransformed: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 1 more field]\n+-----+----+--------+\n|    y|   x|features|\n+-----+----+--------+\n|-12.0|-4.9|  [-4.9]|\n| -6.0|-4.5|  [-4.5]|\n| -7.2|-4.1|  [-4.1]|\n| -5.0|-3.2|  [-3.2]|\n| -2.0|-3.0|  [-3.0]|\n| -3.1|-2.1|  [-2.1]|\n| -4.0|-1.5|  [-1.5]|\n| -2.2|-1.2|  [-1.2]|\n| -2.0|-0.7|  [-0.7]|\n|  1.0|-0.5|  [-0.5]|\n| -0.7|-0.2|  [-0.2]|\n|  1.2| 0.1|   [0.1]|\n|  2.2| 0.3|   [0.3]|\n|  6.5|0.52|  [0.52]|\n|  4.2|0.72|  [0.72]|\n|  8.6| 1.1|   [1.1]|\n|  9.5| 2.3|   [2.3]|\n|14.52| 3.4|   [3.4]|\n| 12.9|3.61|  [3.61]|\n| 16.3| 3.8|   [3.8]|\n+-----+----+--------+\n\nlinreg: org.apache.spark.ml.regression.LinearRegression \u003d linReg_8828e9e6b77c\npipeline: org.apache.spark.ml.Pipeline \u003d pipeline_5b76c24aaafa\nmodel: org.apache.spark.ml.PipelineModel \u003d pipeline_5b76c24aaafa\nmodel2: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_8828e9e6b77c\n"
+            "data": "import org.apache.spark.ml.Pipeline\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.regression.{LinearRegression, LinearRegressionModel}\nfeatures: org.apache.spark.ml.feature.VectorAssembler \u003d vecAssembler_e933efb7ce04\ntransformed: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 1 more field]\n+-----+----+--------+\n|    y|   x|features|\n+-----+----+--------+\n|-12.0|-4.9|  [-4.9]|\n| -6.0|-4.5|  [-4.5]|\n| -7.2|-4.1|  [-4.1]|\n| -5.0|-3.2|  [-3.2]|\n| -2.0|-3.0|  [-3.0]|\n| -3.1|-2.1|  [-2.1]|\n| -4.0|-1.5|  [-1.5]|\n| -2.2|-1.2|  [-1.2]|\n| -2.0|-0.7|  [-0.7]|\n|  1.0|-0.5|  [-0.5]|\n| -0.7|-0.2|  [-0.2]|\n|  1.2| 0.1|   [0.1]|\n|  2.2| 0.3|   [0.3]|\n|  6.5|0.52|  [0.52]|\n|  4.2|0.72|  [0.72]|\n|  8.6| 1.1|   [1.1]|\n|  9.5| 2.3|   [2.3]|\n|14.52| 3.4|   [3.4]|\n| 12.9|3.61|  [3.61]|\n| 16.3| 3.8|   [3.8]|\n+-----+----+--------+\n\nlinreg: org.apache.spark.ml.regression.LinearRegression \u003d linReg_a79538f10556\npipeline: org.apache.spark.ml.Pipeline \u003d pipeline_c4410a01983f\nmodel: org.apache.spark.ml.PipelineModel \u003d pipeline_c4410a01983f\nmodel2: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_a79538f10556\n"
           }
         ]
       },
@@ -148,15 +148,15 @@
       "jobName": "paragraph_1543250821972_513719451",
       "id": "20181126-164701_1395244863",
       "dateCreated": "Nov 26, 2018 4:47:01 PM",
-      "dateStarted": "Nov 26, 2018 5:41:37 PM",
-      "dateFinished": "Nov 26, 2018 5:41:41 PM",
+      "dateStarted": "Dec 9, 2018 8:04:56 PM",
+      "dateFinished": "Dec 9, 2018 8:05:01 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nval linRegModel \u003d model.stages(1).asInstanceOf[LinearRegressionModel]\n// https://en.wikipedia.org/wiki/Root-mean-square_deviation\nprintln(s\"RMSE:  ${linRegModel.summary.rootMeanSquaredError}\")\n// https://en.wikipedia.org/wiki/Coefficient_of_determination\nprintln(s\"r2:    ${linRegModel.summary.r2}\")\nprintln(s\"Model: Y \u003d ${linRegModel.coefficients(0)} * X + ${linRegModel.intercept}\")\n\n// https://en.wikipedia.org/wiki/Errors_and_residuals\n// Difference between observed and estimated values\nlinRegModel.summary.residuals.show()",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:41:33 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:07 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -176,7 +176,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "linRegModel: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_8828e9e6b77c\nRMSE:  2.1064773603437077\nr2:    0.9205193637224095\nModel: Y \u003d 2.8057645950707633 * X + 3.045896709023059\n+-------------------+\n|          residuals|\n+-------------------+\n|-1.2976501931763167|\n| 3.5800439687953762|\n|  1.257738130767069|\n| 0.9325499952033836|\n|  3.371397076189232|\n|-0.2537910593744557|\n|-2.8372498164169135|\n|-1.8789791949381431|\n| -3.081861492473525|\n|-0.6430144114876772|\n|-3.1847437900089064|\n|-2.1264731685301355|\n|-1.6876260875442877|\n| 1.9951057015401439|\n|-0.8660472174740077|\n| 2.4677622363991008|\n|8.44722314186086E-4|\n| 1.9345036677363474|\n|-0.2747068972285138|\n| 2.5921978297080415|\n+-------------------+\n\n"
+            "data": "linRegModel: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_a79538f10556\nRMSE:  2.106477360343708\nr2:    0.9205193637224094\nModel: Y \u003d 2.8057645950707624 * X + 3.045896709023058\n+--------------------+\n|           residuals|\n+--------------------+\n|  -1.297650193176322|\n|  3.5800439687953727|\n|  1.2577381307670672|\n|  0.9325499952033827|\n|   3.371397076189229|\n|-0.25379105937445656|\n| -2.8372498164169144|\n| -1.8789791949381436|\n|  -3.081861492473524|\n| -0.6430144114876768|\n| -3.1847437900089055|\n| -2.1264731685301346|\n| -1.6876260875442863|\n|  1.9951057015401457|\n| -0.8660472174740068|\n|  2.4677622363991034|\n|8.447223141878624E-4|\n|  1.9345036677363492|\n|-0.27470689722851027|\n|   2.592197829708047|\n+--------------------+\n\n"
           }
         ]
       },
@@ -184,15 +184,15 @@
       "jobName": "paragraph_1543251140056_2106825084",
       "id": "20181126-165220_1321888704",
       "dateCreated": "Nov 26, 2018 4:52:20 PM",
-      "dateStarted": "Nov 26, 2018 5:41:37 PM",
-      "dateFinished": "Nov 26, 2018 5:41:42 PM",
+      "dateStarted": "Dec 9, 2018 8:05:07 PM",
+      "dateFinished": "Dec 9, 2018 8:05:08 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nval prediction \u003d model.transform(data)\nprediction.show()\nprediction.createOrReplaceTempView(\"linreg\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:49:18 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:12 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -212,7 +212,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "prediction: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 2 more fields]\n+-----+----+--------+--------------------+\n|    y|   x|features|          prediction|\n+-----+----+--------+--------------------+\n|-12.0|-4.9|  [-4.9]| -10.702349806823683|\n| -6.0|-4.5|  [-4.5]|  -9.580043968795376|\n| -7.2|-4.1|  [-4.1]|   -8.45773813076707|\n| -5.0|-3.2|  [-3.2]| -5.9325499952033836|\n| -2.0|-3.0|  [-3.0]|  -5.371397076189232|\n| -3.1|-2.1|  [-2.1]| -2.8462089406255444|\n| -4.0|-1.5|  [-1.5]| -1.1627501835830865|\n| -2.2|-1.2|  [-1.2]|-0.32102080506185704|\n| -2.0|-0.7|  [-0.7]|  1.0818614924735248|\n|  1.0|-0.5|  [-0.5]|  1.6430144114876772|\n| -0.7|-0.2|  [-0.2]|   2.484743790008906|\n|  1.2| 0.1|   [0.1]|   3.326473168530135|\n|  2.2| 0.3|   [0.3]|   3.887626087544288|\n|  6.5|0.52|  [0.52]|   4.504894298459856|\n|  4.2|0.72|  [0.72]|   5.066047217474008|\n|  8.6| 1.1|   [1.1]|   6.132237763600899|\n|  9.5| 2.3|   [2.3]|   9.499155277685814|\n|14.52| 3.4|   [3.4]|  12.585496332263652|\n| 12.9|3.61|  [3.61]|  13.174706897228514|\n| 16.3| 3.8|   [3.8]|   13.70780217029196|\n+-----+----+--------+--------------------+\n\n"
+            "data": "prediction: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 2 more fields]\n+-----+----+--------+-------------------+\n|    y|   x|features|         prediction|\n+-----+----+--------+-------------------+\n|-12.0|-4.9|  [-4.9]|-10.702349806823678|\n| -6.0|-4.5|  [-4.5]| -9.580043968795373|\n| -7.2|-4.1|  [-4.1]| -8.457738130767067|\n| -5.0|-3.2|  [-3.2]| -5.932549995203383|\n| -2.0|-3.0|  [-3.0]| -5.371397076189229|\n| -3.1|-2.1|  [-2.1]|-2.8462089406255435|\n| -4.0|-1.5|  [-1.5]|-1.1627501835830856|\n| -2.2|-1.2|  [-1.2]|-0.3210208050618566|\n| -2.0|-0.7|  [-0.7]| 1.0818614924735244|\n|  1.0|-0.5|  [-0.5]| 1.6430144114876768|\n| -0.7|-0.2|  [-0.2]| 2.4847437900089053|\n|  1.2| 0.1|   [0.1]| 3.3264731685301343|\n|  2.2| 0.3|   [0.3]| 3.8876260875442865|\n|  6.5|0.52|  [0.52]|  4.504894298459854|\n|  4.2|0.72|  [0.72]|  5.066047217474007|\n|  8.6| 1.1|   [1.1]|  6.132237763600896|\n|  9.5| 2.3|   [2.3]|  9.499155277685812|\n|14.52| 3.4|   [3.4]|  12.58549633226365|\n| 12.9|3.61|  [3.61]|  13.17470689722851|\n| 16.3| 3.8|   [3.8]| 13.707802170291954|\n+-----+----+--------+-------------------+\n\n"
           }
         ]
       },
@@ -220,15 +220,15 @@
       "jobName": "paragraph_1543251855858_-1036750742",
       "id": "20181126-170415_570890450",
       "dateCreated": "Nov 26, 2018 5:04:15 PM",
-      "dateStarted": "Nov 26, 2018 5:49:18 PM",
-      "dateFinished": "Nov 26, 2018 5:49:19 PM",
+      "dateStarted": "Dec 9, 2018 8:05:12 PM",
+      "dateFinished": "Dec 9, 2018 8:05:12 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nmodel.write.overwrite().save(\"/model/pipeline\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:43:43 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:17 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -251,23 +251,24 @@
       "jobName": "paragraph_1543253031532_-1701265993",
       "id": "20181126-172351_574586558",
       "dateCreated": "Nov 26, 2018 5:23:51 PM",
-      "dateStarted": "Nov 26, 2018 5:43:33 PM",
-      "dateFinished": "Nov 26, 2018 5:43:34 PM",
+      "dateStarted": "Dec 9, 2018 8:05:17 PM",
+      "dateFinished": "Dec 9, 2018 8:05:19 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nimport org.apache.spark.ml.PipelineModel\n\nval testData \u003d spark.createDataFrame(Seq(\n\t(-12.0,  -4.9),\n\t( -6.0,  -4.5)\n)).toDF(\"y\", \"x\")\n\nval samePipeline \u003d PipelineModel.load(\"/model/pipeline\")\nsamePipeline.transform(testData).show()",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:47:15 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:22 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -278,7 +279,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.spark.ml.PipelineModel\ntestData: org.apache.spark.sql.DataFrame \u003d [y: double, x: double]\nsamePipeline: org.apache.spark.ml.PipelineModel \u003d pipeline_5b76c24aaafa\n+-----+----+--------+-------------------+\n|    y|   x|features|         prediction|\n+-----+----+--------+-------------------+\n|-12.0|-4.9|  [-4.9]|-10.702349806823683|\n| -6.0|-4.5|  [-4.5]| -9.580043968795376|\n+-----+----+--------+-------------------+\n\n"
+            "data": "import org.apache.spark.ml.PipelineModel\ntestData: org.apache.spark.sql.DataFrame \u003d [y: double, x: double]\nsamePipeline: org.apache.spark.ml.PipelineModel \u003d pipeline_c4410a01983f\n+-----+----+--------+-------------------+\n|    y|   x|features|         prediction|\n+-----+----+--------+-------------------+\n|-12.0|-4.9|  [-4.9]|-10.702349806823678|\n| -6.0|-4.5|  [-4.5]| -9.580043968795373|\n+-----+----+--------+-------------------+\n\n"
           }
         ]
       },
@@ -286,24 +287,24 @@
       "jobName": "paragraph_1543253922164_-641751245",
       "id": "20181126-173842_18417978",
       "dateCreated": "Nov 26, 2018 5:38:42 PM",
-      "dateStarted": "Nov 26, 2018 5:47:15 PM",
-      "dateFinished": "Nov 26, 2018 5:47:17 PM",
+      "dateStarted": "Dec 9, 2018 8:05:22 PM",
+      "dateFinished": "Dec 9, 2018 8:05:24 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\n\nlinreg \u003d spark.table(\"linreg\").toPandas()\nplot \u003d linreg.plot.scatter(x\u003d\u0027x\u0027, y\u003d\u0027y\u0027)\nplot.plot(linreg[\"x\"], linreg[\"prediction\"])",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 5:51:21 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:27 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -314,7 +315,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "[\u003cmatplotlib.lines.Line2D object at 0x7f61abeb9090\u003e]\n"
+            "data": "[\u003cmatplotlib.lines.Line2D object at 0x7fc9f2a9add0\u003e]\n"
           },
           {
             "type": "HTML",
@@ -326,24 +327,24 @@
       "jobName": "paragraph_1543254154196_-1232235182",
       "id": "20181126-174234_69049270",
       "dateCreated": "Nov 26, 2018 5:42:34 PM",
-      "dateStarted": "Nov 26, 2018 5:51:21 PM",
-      "dateFinished": "Nov 26, 2018 5:51:21 PM",
+      "dateStarted": "Dec 9, 2018 8:05:27 PM",
+      "dateFinished": "Dec 9, 2018 8:05:29 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nval quadraticData \u003d data.withColumn(\"x2\", $\"x\" * $\"x\")\n                        .withColumn(\"x3\", $\"x\" * $\"x\" * $\"x\")\n                        .withColumn(\"x4\", $\"x\" * $\"x\" * $\"x\" * $\"x\")\n                        .withColumn(\"x5\", $\"x\" * $\"x\" * $\"x\" * $\"x\" * $\"x\")\nval polynFeatures \u003d new VectorAssembler()\n    .setInputCols(Array(\"x\", \"x2\", \"x3\", \"x4\", \"x5\"))\n    .setOutputCol(\"features\")\nval polynPipeline \u003d new Pipeline().setStages(Array(polynFeatures, linreg))\nval polynModel \u003d polynPipeline.fit(quadraticData) \nval polynReg \u003d polynModel.stages(1).asInstanceOf[LinearRegressionModel]\nprintln(s\"RMSE:  ${polynReg.summary.rootMeanSquaredError}\")\npolynModel.transform(quadraticData).createOrReplaceTempView(\"polyn\")\n\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 6:13:48 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:37 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -354,7 +355,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "quadraticData: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 4 more fields]\npolynFeatures: org.apache.spark.ml.feature.VectorAssembler \u003d vecAssembler_ec6c0ccd7bd0\npolynPipeline: org.apache.spark.ml.Pipeline \u003d pipeline_df463c1478e5\npolynModel: org.apache.spark.ml.PipelineModel \u003d pipeline_df463c1478e5\npolynReg: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_8828e9e6b77c\nRMSE:  1.335467791739633\n"
+            "data": "quadraticData: org.apache.spark.sql.DataFrame \u003d [y: double, x: double ... 4 more fields]\npolynFeatures: org.apache.spark.ml.feature.VectorAssembler \u003d vecAssembler_3d2c0d4736ec\npolynPipeline: org.apache.spark.ml.Pipeline \u003d pipeline_12a912525f72\npolynModel: org.apache.spark.ml.PipelineModel \u003d pipeline_12a912525f72\npolynReg: org.apache.spark.ml.regression.LinearRegressionModel \u003d linReg_a79538f10556\nRMSE:  1.335467791739633\n"
           }
         ]
       },
@@ -362,24 +363,24 @@
       "jobName": "paragraph_1543254538040_-1909036977",
       "id": "20181126-174858_1379731213",
       "dateCreated": "Nov 26, 2018 5:48:58 PM",
-      "dateStarted": "Nov 26, 2018 6:13:48 PM",
-      "dateFinished": "Nov 26, 2018 6:13:49 PM",
+      "dateStarted": "Dec 9, 2018 8:05:37 PM",
+      "dateFinished": "Dec 9, 2018 8:05:39 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pyspark\npolyn \u003d spark.table(\"polyn\").toPandas()\nplot \u003d linreg.plot.scatter(x\u003d\u0027x\u0027, y\u003d\u0027y\u0027)\nplot.plot(polyn[\"x\"], polyn[\"prediction\"])\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 26, 2018 6:13:51 PM",
+      "dateUpdated": "Dec 9, 2018 8:05:42 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "python",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -390,7 +391,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "[\u003cmatplotlib.lines.Line2D object at 0x7f61abae4750\u003e]\n"
+            "data": "[\u003cmatplotlib.lines.Line2D object at 0x7fc9f2a2a690\u003e]\n"
           },
           {
             "type": "HTML",
@@ -402,8 +403,8 @@
       "jobName": "paragraph_1543254886722_-1177372096",
       "id": "20181126-175446_1026076882",
       "dateCreated": "Nov 26, 2018 5:54:46 PM",
-      "dateStarted": "Nov 26, 2018 6:13:51 PM",
-      "dateFinished": "Nov 26, 2018 6:13:52 PM",
+      "dateStarted": "Dec 9, 2018 8:05:42 PM",
+      "dateFinished": "Dec 9, 2018 8:05:42 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -427,25 +428,25 @@
   "name": "Linear regression",
   "id": "2DXDJHEG7",
   "angularObjects": {
-    "2DVD194VA:shared_process": [],
-    "2DW87REX4:shared_process": [],
-    "2DWUVAC5N:shared_process": [],
-    "2DWG9WAE5:shared_process": [],
-    "2DY8GUA99:shared_process": [],
-    "2DY26XMUR:shared_process": [],
-    "2DVZCYW5C:shared_process": [],
-    "2DWYW5MPT:shared_process": [],
-    "2DZ4A5ZAD:shared_process": [],
-    "2DYFW98KN:shared_process": [],
-    "2DYWYUQ5F:shared_process": [],
-    "2DX9XDM8T:shared_process": [],
-    "2DYM19JKH:shared_process": [],
-    "2DXM6JV4E:shared_process": [],
-    "2DYGAB52M:shared_process": [],
-    "2DY5MSDDB:shared_process": [],
-    "2DYUF23WX:shared_process": [],
-    "2DXCRE3VM:shared_process": [],
-    "2DZ4VE2T8:shared_process": []
+    "2DYX5MBA8:shared_process": [],
+    "2E124ETVW:shared_process": [],
+    "2DWFJ65MK:shared_process": [],
+    "2DXRX2S45:shared_process": [],
+    "2DXRF363S:shared_process": [],
+    "2DWCKS2ME:shared_process": [],
+    "2DZD73JVS:shared_process": [],
+    "2DYQ7E2QQ:shared_process": [],
+    "2DWGJX5HJ:shared_process": [],
+    "2DXNNFNCJ:shared_process": [],
+    "2DXYVZ92B:shared_process": [],
+    "2DZDV571W:shared_process": [],
+    "2DYH837Z2:shared_process": [],
+    "2DZM7QDNT:shared_process": [],
+    "2DWKKYW1M:shared_process": [],
+    "2DYV948RR:shared_process": [],
+    "2E13MXNVJ:shared_process": [],
+    "2DYZCTA3R:shared_process": [],
+    "2DXCAPTM1:shared_process": []
   },
   "config": {},
   "info": {}

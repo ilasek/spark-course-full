@@ -3,7 +3,7 @@
     {
       "text": "%dep\nz.reset()\nz.load(\"com.databricks:spark-avro_2.11:4.0.0\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:30:06 AM",
+      "dateUpdated": "Dec 8, 2018 9:14:33 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -23,7 +23,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "res2: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@78d2018d\n"
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@658219d0\n"
           }
         ]
       },
@@ -31,8 +31,8 @@
       "jobName": "paragraph_1540912590070_-1010839775",
       "id": "20181030-151630_278529290",
       "dateCreated": "Oct 30, 2018 3:16:30 PM",
-      "dateStarted": "Nov 17, 2018 6:30:06 AM",
-      "dateFinished": "Nov 17, 2018 6:30:40 AM",
+      "dateStarted": "Dec 8, 2018 9:14:33 PM",
+      "dateFinished": "Dec 8, 2018 9:14:40 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -77,7 +77,7 @@
     {
       "text": "val videos \u003d spark.read.parquet(\"/data/USVideos.parquet\");\nval tags \u003d spark.read.format(\"com.databricks.spark.avro\").load(\"/data/Tags.avro\");\nvideos.createOrReplaceTempView(\"videos\")\ntags.createOrReplaceTempView(\"tags\")\nval trendingUniqueVideos \u003d spark.sql(\"SELECT video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed, MAX(views) AS views, MAX(likes) AS likes, MAX(dislikes) AS dislikes FROM videos GROUP BY video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed\")\ntrendingUniqueVideos.createOrReplaceTempView(\"trendingUniqueVideos\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:32:03 AM",
+      "dateUpdated": "Dec 8, 2018 9:36:25 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -105,15 +105,15 @@
       "jobName": "paragraph_1540911810267_1088831851",
       "id": "20181030-150330_1965937861",
       "dateCreated": "Oct 30, 2018 3:03:30 PM",
-      "dateStarted": "Nov 17, 2018 6:32:03 AM",
-      "dateFinished": "Nov 17, 2018 6:32:23 AM",
+      "dateStarted": "Dec 8, 2018 9:36:25 PM",
+      "dateFinished": "Dec 8, 2018 9:36:28 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "val categories \u003d spark.read.json(\"/data/categories_single_line.json\")\n    .select($\"id\", $\"kind\", $\"snippet.assignable\", $\"snippet.channelId\", $\"snippet.title\".as(\"category_name\"));\ncategories.createOrReplaceTempView(\"categories\")",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:32:37 AM",
+      "dateUpdated": "Dec 8, 2018 9:36:32 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -141,15 +141,15 @@
       "jobName": "paragraph_1541833606258_2136752163",
       "id": "20181110-070646_1227915303",
       "dateCreated": "Nov 10, 2018 7:06:46 AM",
-      "dateStarted": "Nov 17, 2018 6:32:37 AM",
-      "dateFinished": "Nov 17, 2018 6:32:38 AM",
+      "dateStarted": "Dec 8, 2018 9:36:32 PM",
+      "dateFinished": "Dec 8, 2018 9:36:33 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql SELECT * FROM videos",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:32:44 AM",
+      "dateUpdated": "Dec 8, 2018 9:36:42 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -181,15 +181,15 @@
       "jobName": "paragraph_1540911864965_827849504",
       "id": "20181030-150424_1691352213",
       "dateCreated": "Oct 30, 2018 3:04:24 PM",
-      "dateStarted": "Nov 17, 2018 6:32:44 AM",
-      "dateFinished": "Nov 17, 2018 6:32:45 AM",
+      "dateStarted": "Dec 8, 2018 9:36:42 PM",
+      "dateFinished": "Dec 8, 2018 9:36:43 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql SELECT video_id, title, MAX(views) FROM videos GROUP BY video_id, title ORDER BY MAX(views) DESC LIMIT 10\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:32:59 AM",
+      "dateUpdated": "Dec 8, 2018 9:36:48 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -217,8 +217,8 @@
       "jobName": "paragraph_1541832071400_-626135146",
       "id": "20181110-064111_398666551",
       "dateCreated": "Nov 10, 2018 6:41:11 AM",
-      "dateStarted": "Nov 17, 2018 6:32:59 AM",
-      "dateFinished": "Nov 17, 2018 6:33:01 AM",
+      "dateStarted": "Dec 8, 2018 9:36:48 PM",
+      "dateFinished": "Dec 8, 2018 9:36:51 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -261,7 +261,7 @@
     {
       "text": "%sql SELECT SUM(views), category_id, category_name FROM trendingUniqueVideos JOIN categories c ON (category_id \u003d c.id) GROUP BY category_id, category_name ORDER BY SUM(views) DESC\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 10, 2018 7:43:53 AM",
+      "dateUpdated": "Dec 8, 2018 9:37:00 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -295,9 +295,10 @@
           }
         },
         "editorSetting": {
-          "language": "sql"
+          "language": "text",
+          "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sql"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -316,8 +317,8 @@
       "jobName": "paragraph_1541833410922_1210389538",
       "id": "20181110-070330_615205597",
       "dateCreated": "Nov 10, 2018 7:03:30 AM",
-      "dateStarted": "Nov 10, 2018 7:43:53 AM",
-      "dateFinished": "Nov 10, 2018 7:43:56 AM",
+      "dateStarted": "Dec 8, 2018 9:37:00 PM",
+      "dateFinished": "Dec 8, 2018 9:37:04 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -387,7 +388,7 @@
     {
       "text": "%sql \nSELECT SUM(likes) AS likes, SUM(dislikes) AS dislikes, category_id, category_name FROM trendingUniqueVideos JOIN categories c ON (category_id \u003d c.id) GROUP BY category_id, category_name \nORDER BY SUM(dislikes) DESC\nLIMIT 10\n\n",
       "user": "anonymous",
-      "dateUpdated": "Nov 17, 2018 6:46:56 AM",
+      "dateUpdated": "Dec 8, 2018 9:41:10 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -428,10 +429,10 @@
           }
         },
         "editorSetting": {
-          "language": "sql",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sql"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -450,8 +451,8 @@
       "jobName": "paragraph_1541835424375_-1020135586",
       "id": "20181110-073704_30575777",
       "dateCreated": "Nov 10, 2018 7:37:04 AM",
-      "dateStarted": "Nov 17, 2018 6:46:18 AM",
-      "dateFinished": "Nov 17, 2018 6:46:21 AM",
+      "dateStarted": "Dec 8, 2018 9:41:10 PM",
+      "dateFinished": "Dec 8, 2018 9:41:13 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -475,25 +476,25 @@
   "name": "Youtube Videos",
   "id": "2DUWBC4KV",
   "angularObjects": {
-    "2DWD87ZCX:shared_process": [],
-    "2DXDVPJ4W:shared_process": [],
-    "2DVYJCMA2:shared_process": [],
-    "2DYDHMKKU:shared_process": [],
-    "2DVW9ZD8Y:shared_process": [],
-    "2DUKE5R3Y:shared_process": [],
-    "2DY3SNQSN:shared_process": [],
-    "2DV2D7NBV:shared_process": [],
-    "2DY4ME5UZ:shared_process": [],
-    "2DWS2ZZTM:shared_process": [],
-    "2DUVJ5RWX:shared_process": [],
-    "2DW1B3QWK:shared_process": [],
-    "2DVXYRFY2:shared_process": [],
-    "2DW4353TV:shared_process": [],
-    "2DXXSN695:shared_process": [],
-    "2DXPC1D6R:shared_process": [],
-    "2DX4DFKD7:shared_process": [],
-    "2DV349BE1:shared_process": [],
-    "2DVBR5RBW:shared_process": []
+    "2DZT8M8ZT:shared_process": [],
+    "2DXZJSHA9:shared_process": [],
+    "2DYUM8WYA:shared_process": [],
+    "2DWD2KXUE:shared_process": [],
+    "2DWZVJ9Z7:shared_process": [],
+    "2DWEY4SD6:shared_process": [],
+    "2DZFMW5MV:shared_process": [],
+    "2DXQKRG65:shared_process": [],
+    "2DZMZ75R3:shared_process": [],
+    "2DZ2DBH1Y:shared_process": [],
+    "2DWN2MVK5:shared_process": [],
+    "2DXUR3SGD:shared_process": [],
+    "2DYKSB7W8:shared_process": [],
+    "2DY886GYJ:shared_process": [],
+    "2DWVZP37D:shared_process": [],
+    "2DZB86H22:shared_process": [],
+    "2DY24CP62:shared_process": [],
+    "2DWFMXWKZ:shared_process": [],
+    "2DXFPD3H2:shared_process": []
   },
   "config": {},
   "info": {}
