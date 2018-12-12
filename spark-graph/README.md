@@ -65,7 +65,7 @@ Check a [Graph processing basics on Edureka](https://www.edureka.co/blog/spark-g
     |10821| BWI|2.6949881310942163| BWI|
     +-----+----+------------------+----+
     ```
-4. Find airports that you can travel between in a cycle: Airport1 -> Airpot2 -> Airport1 and the total travel distance is greater than 10300 miles.
+4. Find airports that you can travel between in a cycle: Airport1 -> Airpot2 -> Airport3 -> Airport1 and the total travel distance is greater than 10300 miles.
     ```
     Sample output:
     +-----+----------------+-----+----------------+-----+----------------+

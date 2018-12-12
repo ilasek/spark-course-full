@@ -28,7 +28,7 @@ public class YoutubeVideos {
 
         Dataset<Row> categories = spark.read().option("multiline", true).json("spark-sql/data/US_category_id.json");
 
-        Dataset<Row> videos = spark.read().parquet("spark-sql/data/USVideos.parquet");
+        Dataset<Row> videos = spark.read().parquet("spark-sql/data/USvideos.parquet");
         videos.show();
 
         Dataset<Row> flatCategories = flattenCategories(categories);

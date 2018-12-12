@@ -12,8 +12,18 @@ You can walk through [Spark ML introduction](https://www.edureka.co/blog/spark-m
       .setOutputCol("features")
     ```
 * [LinearRegression](https://spark.apache.org/docs/latest/ml-classification-regression.html#linear-regression)
-
+    ```scala
+    val linreg = new LinearRegression().setLabelCol("label_column_that_we_are_predicting")
+    ```
 * [Pipelines](https://spark.apache.org/docs/latest/ml-pipeline.html)
+    ```scala
+    val pipeline = new Pipeline().setStages(Array(assembler, linreg))
+    val model = pipeline.fit(data)
+    ```
+* Apply a pipeline and predict values
+    ```scala
+    val prediction = model.transform(data)
+    ```
 
 ## Assignment
 Prepare a linear regression model to estimate function represented by sample input data.
