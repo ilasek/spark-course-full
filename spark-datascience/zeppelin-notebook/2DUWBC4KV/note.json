@@ -75,7 +75,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "val videos \u003d spark.read.parquet(\"/data/USVideos.parquet\");\nval tags \u003d spark.read.format(\"com.databricks.spark.avro\").load(\"/data/Tags.avro\");\nvideos.createOrReplaceTempView(\"videos\")\ntags.createOrReplaceTempView(\"tags\")\nval trendingUniqueVideos \u003d spark.sql(\"SELECT video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed, MAX(views) AS views, MAX(likes) AS likes, MAX(dislikes) AS dislikes FROM videos GROUP BY video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed\")\ntrendingUniqueVideos.createOrReplaceTempView(\"trendingUniqueVideos\")",
+      "text": "val videos \u003d spark.read.parquet(\"/data/USvideos.parquet\");\nval tags \u003d spark.read.format(\"com.databricks.spark.avro\").load(\"/data/Tags.avro\");\nvideos.createOrReplaceTempView(\"videos\")\ntags.createOrReplaceTempView(\"tags\")\nval trendingUniqueVideos \u003d spark.sql(\"SELECT video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed, MAX(views) AS views, MAX(likes) AS likes, MAX(dislikes) AS dislikes FROM videos GROUP BY video_id, title, channel_title, category_id, publish_time, thumbnail_link, comments_disabled, ratings_disabled, video_error_or_removed\")\ntrendingUniqueVideos.createOrReplaceTempView(\"trendingUniqueVideos\")",
       "user": "anonymous",
       "dateUpdated": "Dec 8, 2018 9:36:25 PM",
       "config": {
